@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.webkit.HttpAuthHandler;
+import android.widget.Toast;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -34,7 +35,7 @@ public class LoginScript extends AsyncTask<String, Void, Object> {
 
     @Override
     protected Object doInBackground(String... params) {
-        String webserver = "http://192.168.1.101/its/";
+        String webserver = "http://192.168.0.13/its/";
 
         if (params[0] == "login") {
             try {
@@ -48,7 +49,6 @@ public class LoginScript extends AsyncTask<String, Void, Object> {
                 BufferedWriter buffwriter = new BufferedWriter(new OutputStreamWriter(outstream, "UTF-8"));
 
                 String postData = URLEncoder.encode("userid", "UTF-8") + '=' + URLEncoder.encode(params[1], "UTF-8");
-                //+ "&" + URLEncoder.encode("password", "UTF-8") + '=' + URLEncoder.encode(params[2], "UTF-8");
                 buffwriter.write(postData);
                 buffwriter.flush();
                 buffwriter.close();
@@ -58,24 +58,31 @@ public class LoginScript extends AsyncTask<String, Void, Object> {
                 BufferedReader buffreader = new BufferedReader(new InputStreamReader(instream, "iso-8859-1"));
                 String result = "", line = "";
                 while ((line = buffreader.readLine()) != null)
-                    result += line + "\r\n";
+                    result += line;
 
                 buffreader.close();
                 instream.close();
                 urlConnection.disconnect();
 
-                String[] array = result.split(",");
-                array[0] = array[0].replace("#", "");
+                if (!result.startsWith("!")) {
+                    String[] array = result.split(",");
+                    if (Integer.parseInt(array[1]) < 5) {
+                        if (array[0] == params[2]) {
+                            return new String[] { array[2], array[3] };
+                        }
+                        else {
+                            //update
+                        }
+                    }
+                } else {
+                    return null;
+                }
 
-                //check password
-
-                return new String[] { array[2], array[3] };
-//                return new String[] { "Student", "0003211831" };
 
             } catch (MalformedURLException e) {
-                return e.getMessage();
+                return null;
             } catch (IOException e) {
-                return e.getMessage();
+                return null;
             }
         }
 
@@ -90,12 +97,18 @@ public class LoginScript extends AsyncTask<String, Void, Object> {
 
     @Override
     protected void onPostExecute(Object result) {
-        String[] array = (String[]) result;
-        Intent i = new Intent(context, Dashboard.class);
-        i.putExtra("type", array[0]);
-        i.putExtra("id", array[1]);
-        context.startActivity(i);
-        ((Login)context).finish();
+        if (result != null) {
+            String[] array = (String[]) result;
+            Intent i = new Intent(context, Dashboard.class);
+            i.putExtra("type", array[0]);
+            i.putExtra("id", array[1]);
+            context.startActivity(i);
+            ((Login)context).finish();
+        }
+        else {
+            Toast.makeText(((Login)context), "Wrong input! Check your User ID and/or Password!", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     @Override

@@ -30,7 +30,7 @@ public class FetchUserInfo extends AsyncTask<String, Void, Object> {
 
     @Override
     protected Object doInBackground(String... params) {
-        String webserver = "http://192.168.1.101/its/";
+        String webserver = "http://192.168.0.13/its/";
 
         //if (params[0] == "Student") {
             try {
@@ -44,7 +44,6 @@ public class FetchUserInfo extends AsyncTask<String, Void, Object> {
                 BufferedWriter buffwriter = new BufferedWriter(new OutputStreamWriter(outstream, "UTF-8"));
 
                 String postData = URLEncoder.encode("userid", "UTF-8") + '=' + URLEncoder.encode(params[1], "UTF-8");
-                //+ "&" + URLEncoder.encode("password", "UTF-8") + '=' + URLEncoder.encode(params[2], "UTF-8");
                 buffwriter.write(postData);
                 buffwriter.flush();
                 buffwriter.close();

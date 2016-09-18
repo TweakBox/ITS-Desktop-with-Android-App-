@@ -56,7 +56,7 @@ public class Dashboard extends AppCompatActivity
     }
 
     public void onBackgroundProccessFinished() {
-        tvwFullname.setText(ai.GetLastname() + ", " + ai.GetFirstname() + ' ' + ai.GetMiddlename().substring(0, 1));
+        tvwFullname.setText(ai.GetLastname() + ", " + ai.GetFirstname() + ' ' + ai.GetMiddlename().substring(0, 1) + '.');
         ivwAvatar.setImageBitmap(ai.GetAvatar());
     }
 
