@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1E910330-1712-4B11-9D7C-4697D799C181}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JSLA</RootNamespace>
+    <AssemblyName>JSLA</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.9.5\Assemblies\v4.5\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administrator\AccountManager\AccountManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\AccountManager\AccountManager.Designer.cs">
+      <DependentUpon>AccountManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Announcements.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Announcements.Designer.cs">
+      <DependentUpon>Announcements.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AccountManager\StudentInfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\AccountManager\StudentInfoDialog.Designer.cs">
+      <DependentUpon>StudentInfoDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AccountManager\AccountListManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\AccountManager\AccountListManager.Designer.cs">
+      <DependentUpon>AccountListManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\FileManager\FileManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\FileManager\FileManager.Designer.cs">
+      <DependentUpon>FileManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\FileManager\SubjectManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\FileManager\SubjectManager.Designer.cs">
+      <DependentUpon>SubjectManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AccountManager\TeacherInfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\AccountManager\TeacherInfoDialog.Designer.cs">
+      <DependentUpon>TeacherInfoDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classess\AccountInfo.cs" />
+    <Compile Include="Classess\Announcement.cs" />
+    <Compile Include="Classess\Database.cs" />
+    <Compile Include="Classess\WebServer.cs" />
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student\Announcements.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Student\Announcements.Designer.cs">
+      <DependentUpon>Announcements.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Student\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student\HomeworkInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Student\HomeworkInfo.Designer.cs">
+      <DependentUpon>HomeworkInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student\SubjectInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Student\SubjectInfo.Designer.cs">
+      <DependentUpon>SubjectInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Subjects\Subjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Student\Subjects\Subjects.Designer.cs">
+      <DependentUpon>Subjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Subjects\Handouts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Student\Subjects\Handouts.Designer.cs">
+      <DependentUpon>Handouts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\Announcements.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teacher\Announcements.Designer.cs">
+      <DependentUpon>Announcements.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teacher\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\HandoutsManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teacher\HandoutsManager.Designer.cs">
+      <DependentUpon>HandoutsManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\Subjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teacher\Subjects.Designer.cs">
+      <DependentUpon>Subjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\DownloadableFileItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\DownloadableFileItem.Designer.cs">
+      <DependentUpon>DownloadableFileItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\ItemInfoButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\ItemInfoButton.Designer.cs">
+      <DependentUpon>ItemInfoButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\LabelDropShadow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\LabelDropShadow.Designer.cs">
+      <DependentUpon>LabelDropShadow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\PictureButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\PictureButton.Designer.cs">
+      <DependentUpon>PictureButton.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Administrator\AccountManager\AccountManager.resx">
+      <DependentUpon>AccountManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Announcements.resx">
+      <DependentUpon>Announcements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\AccountManager\StudentInfoDialog.resx">
+      <DependentUpon>StudentInfoDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\AccountManager\AccountListManager.resx">
+      <DependentUpon>AccountListManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\FileManager\FileManager.resx">
+      <DependentUpon>FileManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\FileManager\SubjectManager.resx">
+      <DependentUpon>SubjectManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\AccountManager\TeacherInfoDialog.resx">
+      <DependentUpon>TeacherInfoDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Student\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Student\HomeworkInfo.resx">
+      <DependentUpon>HomeworkInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Student\SubjectInfo.resx">
+      <DependentUpon>SubjectInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Student\Subjects\Subjects.resx">
+      <DependentUpon>Subjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Student\Subjects\Handouts.resx">
+      <DependentUpon>Handouts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Teacher\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Teacher\HandoutsManager.resx">
+      <DependentUpon>HandoutsManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Teacher\Subjects.resx">
+      <DependentUpon>Subjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\DownloadableFileItem.resx">
+      <DependentUpon>DownloadableFileItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\ItemInfoButton.resx">
+      <DependentUpon>ItemInfoButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\PictureButton.resx">
+      <DependentUpon>PictureButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hamburger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Announcements.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Subjects.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="jsla.sql" />
+    <None Include="Resources\BrowseFile.png" />
+    <None Include="Resources\Upload.png" />
+    <None Include="Resources\OpenSmall.png" />
+    <None Include="Resources\DownloadSmall.png" />
+    <None Include="Resources\Download.png" />
+    <None Include="Resources\Cancel.png" />
+    <None Include="Resources\Logout.png" />
+    <None Include="Resources\Previous.png" />
+    <None Include="Resources\Next.png" />
+    <None Include="Resources\Save.png" />
+    <None Include="Resources\Reset.png" />
+    <None Include="Resources\Remove.png" />
+    <None Include="Resources\Add.png" />
+    <None Include="Resources\Edit.png" />
+    <None Include="Resources\Data.png" />
+    <None Include="Resources\Accounts.png" />
+    <None Include="Resources\Exit_Dark.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

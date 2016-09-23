@@ -5,7 +5,8 @@
         <item
             android:id="@+id/nav_announcements"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Announcements" />
+            android:title="Announcements"
+            android:checked="true" />
         <item
             android:id="@+id/nav_subjects"
             android:icon="@drawable/ic_menu_slideshow"

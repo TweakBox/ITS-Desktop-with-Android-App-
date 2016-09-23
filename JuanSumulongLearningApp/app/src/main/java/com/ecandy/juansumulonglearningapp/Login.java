@@ -1,17 +1,15 @@
 package com.ecandy.juansumulonglearningapp;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
 
-    private EditText txtUserID;
-    private EditText txtPassword;
+    private EditText txtUserID, txtPassword;
+    private Button btnSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +18,19 @@ public class Login extends AppCompatActivity {
 
         txtUserID = (EditText) findViewById(R.id.txtUserID);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
-        Button btnSubmit = (Button) findViewById(R.id.btnSubmit);
+        btnSubmit  = (Button) findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onLogin();
             }
         });
+
+        Bundle data = getIntent().getExtras();
+        if (data != null) {
+            txtUserID.setText(data.getString("id"));
+            txtPassword.requestFocus();
+        }
 
 //        Intent i = new Intent(this, Dashboard.class);
 //        i.putExtra("type", "Student");
@@ -38,5 +42,18 @@ public class Login extends AppCompatActivity {
     private void onLogin() {
         LoginScript bgw = new LoginScript(this);
         bgw.execute("login", txtUserID.getText().toString(), txtPassword.getText().toString());
+        btnSubmit.setEnabled(false);
+        btnSubmit.setBackgroundColor(getResources().getColor(R.color.colorAccentDark));
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
+
+    public void onTaskFinished() {
+        btnSubmit.setEnabled(true);
+        btnSubmit.setBackgroundColor(getResources().getColor(R.color.colorAccent));
     }
 }

@@ -1,4 +1,4 @@
-package layout;
+package com.ecandy.juansumulonglearningapp;
 
 
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import com.ecandy.juansumulonglearningapp.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Subjects extends Fragment {
+public class Announcements extends Fragment {
 
 
-    public Subjects() {
+    public Announcements() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class Subjects extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_subjects, container, false);
+        return inflater.inflate(R.layout.fragment_announcements, container, false);
     }
 
 }

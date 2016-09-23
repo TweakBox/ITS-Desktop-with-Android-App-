@@ -1,9 +1,7 @@
 package com.ecandy.juansumulonglearningapp;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 
 /**
  * Created by TweakBox on 18/09/2016.
@@ -49,20 +47,22 @@ public class AccountInfo {
 
     public AccountInfo(Dashboard caller, String type, String id) {
         _caller = caller;
-        FetchUserInfo fui = new FetchUserInfo(this);
+        FetchUserInfoScript fui = new FetchUserInfoScript(this);
         fui.execute(type, id);
         SetId(id);
     }
 
-    public void onBackgroundTaskComplete(Object result) {
-        String[] array = (String[])result;
+    public void onBackgroundTaskComplete(String result) {
+        if (result != "Error") {
+            String[] array = result.split(",");
 
-        SetLastname(array[0]);
-        SetFirstname(array[1]);
-        SetMiddlename(array[2]);
-        byte[] data = array[3].getBytes();
-        SetAvatar(BitmapFactory.decodeByteArray(data, 0, data.length));
+            SetLastname(array[0]);
+            SetFirstname(array[1]);
+            SetMiddlename(array[2]);
+            byte[] data = array[3].getBytes();
+            SetAvatar(BitmapFactory.decodeByteArray(data, 0, data.length));
 
-        _caller.onBackgroundProccessFinished();
+            _caller.onBackgroundProccessFinished();
+        }
     }
 }

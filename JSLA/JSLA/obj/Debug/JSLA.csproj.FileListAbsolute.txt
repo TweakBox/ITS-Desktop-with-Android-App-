@@ -38,3 +38,6 @@ D:\School Files\ITS\JSLA\JSLA\obj\Debug\JSLA.Student.Subjects.Handouts.resources
 D:\School Files\ITS\JSLA\JSLA\obj\Debug\JSLA.Student.Subjects.Subjects.resources
 D:\School Files\ITS\JSLA\JSLA\obj\Debug\JSLA.Usercontrols.DownloadableFileItem.resources
 D:\School Files\ITS\JSLA\JSLA\obj\Debug\JSLA.Teacher.HandoutsManager.resources
+D:\ITS\JSLA\JSLA\bin\Debug\JSLA.exe.config
+D:\ITS\JSLA\JSLA\obj\Debug\JSLA.exe
+D:\ITS\JSLA\JSLA\obj\Debug\JSLA.pdb

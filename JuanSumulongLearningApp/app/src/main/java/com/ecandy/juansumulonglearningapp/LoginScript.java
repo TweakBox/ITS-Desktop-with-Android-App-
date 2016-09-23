@@ -7,6 +7,9 @@ import android.os.AsyncTask;
 import android.webkit.HttpAuthHandler;
 import android.widget.Toast;
 
+import com.ecandy.juansumulonglearningapp.Dashboard;
+import com.ecandy.juansumulonglearningapp.Login;
+
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -35,9 +38,9 @@ public class LoginScript extends AsyncTask<String, Void, Object> {
 
     @Override
     protected Object doInBackground(String... params) {
-        String webserver = "http://192.168.0.13/its/";
+        String webserver = IPNetwork.IP;
 
-        if (params[0] == "login") {
+        if (params[0].equals("login")) {
             try {
                 URL url = new URL(webserver + "login.php");
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -48,7 +51,8 @@ public class LoginScript extends AsyncTask<String, Void, Object> {
                 OutputStream outstream = urlConnection.getOutputStream();
                 BufferedWriter buffwriter = new BufferedWriter(new OutputStreamWriter(outstream, "UTF-8"));
 
-                String postData = URLEncoder.encode("userid", "UTF-8") + '=' + URLEncoder.encode(params[1], "UTF-8");
+                String postData = URLEncoder.encode("userid", "UTF-8") + '=' + URLEncoder.encode(params[1], "UTF-8") + '&' +
+                        URLEncoder.encode("pass", "UTF-8") + '=' + URLEncoder.encode(params[2], "UTF-8");
                 buffwriter.write(postData);
                 buffwriter.flush();
                 buffwriter.close();
@@ -64,21 +68,44 @@ public class LoginScript extends AsyncTask<String, Void, Object> {
                 instream.close();
                 urlConnection.disconnect();
 
-                if (!result.startsWith("!")) {
+//                if (result != null && !result.startsWith("!")) { //check for error
+//                    String[] array = result.split(",");
+//                    if (Integer.parseInt(array[1]) < 5) { //check attempts
+//                        if (array[0] == params[2]) { //check pass
+//                            return new String[] { array[2], array[3] };
+//                        }
+//                        else { //update attempts
+//                            //update
+//                            String attempts = Integer.toString(Integer.parseInt(array[1]) + 1);
+//
+//                            url = new URL(webserver + "updateAttempts.php");
+//                            urlConnection = (HttpURLConnection) url.openConnection();
+//                            urlConnection.setRequestMethod("POST");
+//                            urlConnection.setDoOutput(true);
+//                            urlConnection.setDoInput(true);
+//
+//                            outstream = urlConnection.getOutputStream();
+//                            buffwriter = new BufferedWriter(new OutputStreamWriter(outstream, "UTF-8"));
+//
+//                            postData = URLEncoder.encode("userid", "UTF-8") + '=' + URLEncoder.encode(params[1], "UTF-8") + '&' +
+//                                    URLEncoder.encode("attempts", "UTF-8") + '=' + URLEncoder.encode(attempts, "UTF-8");
+//                            buffwriter.write(postData);
+//                            buffwriter.flush();
+//                            buffwriter.close();
+//                            outstream.close();
+//                        }
+//                    } else { //user blocked
+//                        Toast.makeText(((Login)context), "Sorry, this account is locked! This account has attempted five (5) login attempts with wrong password! Please contact your adviser.", Toast.LENGTH_LONG).show();
+//                    }
+//                } else {
+//                    return null;
+//                }
+                if (result != "") {
                     String[] array = result.split(",");
-                    if (Integer.parseInt(array[1]) < 5) {
-                        if (array[0] == params[2]) {
-                            return new String[] { array[2], array[3] };
-                        }
-                        else {
-                            //update
-                        }
-                    }
+                    return new String[] { array[2], array[3] };
                 } else {
                     return null;
                 }
-
-
             } catch (MalformedURLException e) {
                 return null;
             } catch (IOException e) {
@@ -86,7 +113,7 @@ public class LoginScript extends AsyncTask<String, Void, Object> {
             }
         }
 
-        return "Error";
+        return null;
     }
 
     @Override
@@ -106,7 +133,8 @@ public class LoginScript extends AsyncTask<String, Void, Object> {
             ((Login)context).finish();
         }
         else {
-            Toast.makeText(((Login)context), "Wrong input! Check your User ID and/or Password!", Toast.LENGTH_LONG).show();
+            Toast.makeText(((Login)context), "Wrong input! Please try again!", Toast.LENGTH_LONG).show();
+            ((Login) context).onTaskFinished();
         }
 
     }

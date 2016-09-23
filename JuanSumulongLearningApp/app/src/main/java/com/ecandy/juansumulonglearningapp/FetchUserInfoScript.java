@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.webkit.HttpAuthHandler;
 
+import com.ecandy.juansumulonglearningapp.AccountInfo;
+
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -23,16 +25,16 @@ import java.net.URLEncoder;
 /**
  * Created by TweakBox on 17/09/2016.
  */
-public class FetchUserInfo extends AsyncTask<String, Void, Object> {
+public class FetchUserInfoScript extends AsyncTask<String, Void, String> {
 
     private AccountInfo _caller;
-    FetchUserInfo(AccountInfo caller) { _caller = caller; }
+    FetchUserInfoScript(AccountInfo caller) { _caller = caller; }
 
     @Override
-    protected Object doInBackground(String... params) {
-        String webserver = "http://192.168.0.13/its/";
+    protected String doInBackground(String... params) {
+        String webserver = IPNetwork.IP;
 
-        //if (params[0] == "Student") {
+        /*if (params[0].toString() == "Student")*/ {
             try {
                 URL url = new URL(webserver + "fetchStudentInfo.php");
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -59,17 +61,15 @@ public class FetchUserInfo extends AsyncTask<String, Void, Object> {
                 instream.close();
                 urlConnection.disconnect();
 
-                Object[] array = result.split(",");
-
-                return  array;
+                return  result;
             } catch (MalformedURLException e) {
                 return e.getMessage();
             } catch (IOException e) {
                 return e.getMessage();
             }
-      //  }
+        }
 
-     //   return "Error";
+//        return "Error";
     }
 
     @Override
@@ -78,7 +78,7 @@ public class FetchUserInfo extends AsyncTask<String, Void, Object> {
     }
 
     @Override
-    protected void onPostExecute(Object result) {
+    protected void onPostExecute(String result) {
         _caller.onBackgroundTaskComplete(result);
     }
 
